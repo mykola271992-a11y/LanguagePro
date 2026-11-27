@@ -1,0 +1,30 @@
+name: Build Language Pro APK
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'Language-Pro-3.1-source.zip'
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Extract project and build APK
+        run: |
+          unzip -q Language-Pro-3.1-source.zip -d "$RUNNER_TEMP/languagepro"
+          cd "$RUNNER_TEMP/languagepro"
+          gradle --no-daemon :app:assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Language-Pro-3.1.apk"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Language-Pro-3.1-APK
+          path: Language-Pro-3.1.apk
