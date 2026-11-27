@@ -1,0 +1,707 @@
+[
+  {
+    "title": "1. Привітання та основні слова",
+    "phrases": [
+      {
+        "de": "Hallo.",
+        "uk": "Привіт."
+      },
+      {
+        "de": "Guten Morgen.",
+        "uk": "Доброго ранку."
+      },
+      {
+        "de": "Guten Tag.",
+        "uk": "Добрий день."
+      },
+      {
+        "de": "Guten Abend.",
+        "uk": "Добрий вечір."
+      },
+      {
+        "de": "Gute Nacht.",
+        "uk": "Добраніч."
+      },
+      {
+        "de": "Schlaf gut!",
+        "uk": "Спи добре!"
+      },
+      {
+        "de": "Bis morgen!",
+        "uk": "До завтра."
+      },
+      {
+        "de": "Danke.",
+        "uk": "Дякую."
+      },
+      {
+        "de": "Danke schön.",
+        "uk": "Красно дякую."
+      },
+      {
+        "de": "Bitte.",
+        "uk": "Будь ласка."
+      },
+      {
+        "de": "Entschuldigung.",
+        "uk": "Вибачте."
+      },
+      {
+        "de": "Ja.",
+        "uk": "Так."
+      },
+      {
+        "de": "Nein.",
+        "uk": "Ні."
+      },
+      {
+        "de": "Ich.",
+        "uk": "Я."
+      },
+      {
+        "de": "Heute.",
+        "uk": "Сьогодні."
+      },
+      {
+        "de": "Jetzt.",
+        "uk": "Зараз."
+      },
+      {
+        "de": "Ich bin.",
+        "uk": "Я є."
+      },
+      {
+        "de": "Wie geht's?",
+        "uk": "Як справи?"
+      },
+      {
+        "de": "Wie geht es dir?",
+        "uk": "Як у тебе справи?"
+      },
+      {
+        "de": "Mir geht es gut.",
+        "uk": "У мене все добре."
+      },
+      {
+        "de": "Und dir?",
+        "uk": "А в тебе?"
+      },
+      {
+        "de": "Ich gehe schlafen.",
+        "uk": "Я йду спати."
+      },
+      {
+        "de": "Bist du müde?",
+        "uk": "Ти втомився?"
+      }
+    ]
+  },
+  {
+    "title": "2. Знайомство",
+    "phrases": [
+      {
+        "de": "Ich heiße Alex.",
+        "uk": "Мене звати Алекс."
+      },
+      {
+        "de": "Wie heißt du?",
+        "uk": "Як тебе звати?"
+      },
+      {
+        "de": "Ich komme aus der Ukraine.",
+        "uk": "Я з України."
+      },
+      {
+        "de": "Woher kommst du?",
+        "uk": "Звідки ти?"
+      },
+      {
+        "de": "Ich wohne in Tschechien.",
+        "uk": "Я живу в Чехії."
+      },
+      {
+        "de": "Ich wohne jetzt in Tschechien.",
+        "uk": "Я зараз живу в Чехії."
+      },
+      {
+        "de": "Wo wohnst du?",
+        "uk": "Де ти живеш?"
+      },
+      {
+        "de": "Wo wohnst du jetzt?",
+        "uk": "Де ти зараз живеш?"
+      },
+      {
+        "de": "Ich bin in Tschechien.",
+        "uk": "Я в Чехії."
+      },
+      {
+        "de": "Ich bin vierunddreißig Jahre alt.",
+        "uk": "Мені тридцять чотири роки."
+      },
+      {
+        "de": "Wie alt bist du?",
+        "uk": "Скільки тобі років?"
+      },
+      {
+        "de": "Was machst du beruflich?",
+        "uk": "Ким ти працюєш?"
+      },
+      {
+        "de": "Ich lerne Deutsch.",
+        "uk": "Я вивчаю німецьку."
+      },
+      {
+        "de": "Sprichst du Deutsch?",
+        "uk": "Ти розмовляєш німецькою?"
+      },
+      {
+        "de": "Ich spreche ein bisschen Deutsch.",
+        "uk": "Я трохи розмовляю німецькою."
+      },
+      {
+        "de": "Ich spreche nur ein bisschen Deutsch.",
+        "uk": "Я розмовляю німецькою лише трохи."
+      },
+      {
+        "de": "Ich spreche wenig Deutsch.",
+        "uk": "Я мало розмовляю німецькою."
+      }
+    ]
+  },
+  {
+    "title": "3. Спілкування та допомога",
+    "phrases": [
+      {
+        "de": "Ich verstehe nicht.",
+        "uk": "Я не розумію."
+      },
+      {
+        "de": "Sprich bitte langsam.",
+        "uk": "Говори, будь ласка, повільно."
+      },
+      {
+        "de": "Bitte sprechen Sie langsam.",
+        "uk": "Говоріть, будь ласка, повільно."
+      },
+      {
+        "de": "Kannst du bitte langsam sprechen?",
+        "uk": "Можеш, будь ласка, говорити повільно?"
+      },
+      {
+        "de": "Können Sie das bitte wiederholen?",
+        "uk": "Можете, будь ласка, це повторити?"
+      },
+      {
+        "de": "Ich brauche Hilfe.",
+        "uk": "Мені потрібна допомога."
+      },
+      {
+        "de": "Können Sie mir bitte helfen?",
+        "uk": "Можете мені, будь ласка, допомогти?"
+      },
+      {
+        "de": "Können Sie mir das zeigen?",
+        "uk": "Можете мені це показати?"
+      },
+      {
+        "de": "Du hast.",
+        "uk": "Ти маєш."
+      },
+      {
+        "de": "Du hasst.",
+        "uk": "Ти ненавидиш."
+      }
+    ]
+  },
+  {
+    "title": "4. Робота та пошук роботи",
+    "phrases": [
+      {
+        "de": "Die Arbeit.",
+        "uk": "Робота."
+      },
+      {
+        "de": "Arbeiten.",
+        "uk": "Працювати."
+      },
+      {
+        "de": "Der Beruf.",
+        "uk": "Професія."
+      },
+      {
+        "de": "Die Fabrik.",
+        "uk": "Завод."
+      },
+      {
+        "de": "Ich suche Arbeit.",
+        "uk": "Я шукаю роботу."
+      },
+      {
+        "de": "Guten Tag, ich suche Arbeit.",
+        "uk": "Добрий день, я шукаю роботу."
+      },
+      {
+        "de": "Ich arbeite in einer Fabrik.",
+        "uk": "Я працюю на заводі."
+      },
+      {
+        "de": "Ich arbeite hier.",
+        "uk": "Я працюю тут."
+      },
+      {
+        "de": "Ich arbeite heute.",
+        "uk": "Я сьогодні працюю."
+      },
+      {
+        "de": "Ich arbeite heute nicht.",
+        "uk": "Я сьогодні не працюю."
+      },
+      {
+        "de": "Ich bin fertig.",
+        "uk": "Я закінчив."
+      },
+      {
+        "de": "Was soll ich machen?",
+        "uk": "Що мені робити?"
+      },
+      {
+        "de": "Wo soll ich das hinstellen?",
+        "uk": "Куди мені це поставити?"
+      },
+      {
+        "de": "Ich brauche Hilfe bei der Arbeit.",
+        "uk": "Мені потрібна допомога на роботі."
+      },
+      {
+        "de": "Ich warte auf die Teile.",
+        "uk": "Я чекаю на деталі."
+      },
+      {
+        "de": "Die Teile sind fertig.",
+        "uk": "Деталі готові."
+      },
+      {
+        "de": "Ich brauche neue Teile.",
+        "uk": "Мені потрібні нові деталі."
+      },
+      {
+        "de": "Es gibt keine Arbeit.",
+        "uk": "Немає роботи."
+      },
+      {
+        "de": "Wann geht es weiter?",
+        "uk": "Коли продовжимо?"
+      },
+      {
+        "de": "Warum arbeitest du nicht?",
+        "uk": "Чому ти не працюєш?"
+      },
+      {
+        "de": "Wie lange wartest du schon?",
+        "uk": "Як довго ти вже чекаєш?"
+      },
+      {
+        "de": "Ich warte schon seit drei Stunden.",
+        "uk": "Я чекаю вже три години."
+      },
+      {
+        "de": "Die Maschine ist kaputt.",
+        "uk": "Машина зламана."
+      },
+      {
+        "de": "Die Maschine funktioniert nicht.",
+        "uk": "Машина не працює."
+      },
+      {
+        "de": "Ich habe ein Problem mit der Maschine.",
+        "uk": "У мене проблема з машиною."
+      },
+      {
+        "de": "Ich brauche eine Pause.",
+        "uk": "Мені потрібна перерва."
+      },
+      {
+        "de": "Ich brauche Wasser.",
+        "uk": "Мені потрібна вода."
+      },
+      {
+        "de": "Ich brauche jetzt Wasser.",
+        "uk": "Мені зараз потрібна вода."
+      },
+      {
+        "de": "Wann ist Feierabend?",
+        "uk": "Коли закінчується робочий день?"
+      },
+      {
+        "de": "Ich bin müde.",
+        "uk": "Я втомився."
+      },
+      {
+        "de": "Ich bin müde nach der Schicht.",
+        "uk": "Я втомився після зміни."
+      },
+      {
+        "de": "Ich möchte nach Hause.",
+        "uk": "Я хочу додому."
+      },
+      {
+        "de": "Ich möchte nach Hause gehen.",
+        "uk": "Я хочу піти додому."
+      }
+    ]
+  },
+  {
+    "title": "5. Магазин і покупки",
+    "phrases": [
+      {
+        "de": "Wie viel kostet das?",
+        "uk": "Скільки це коштує?"
+      },
+      {
+        "de": "Es kostet zehn Euro.",
+        "uk": "Це коштує десять євро."
+      },
+      {
+        "de": "Das ist zu teuer.",
+        "uk": "Це занадто дорого."
+      },
+      {
+        "de": "Haben Sie etwas Billigeres?",
+        "uk": "У вас є щось дешевше?"
+      },
+      {
+        "de": "Ich möchte das kaufen.",
+        "uk": "Я хочу це купити."
+      },
+      {
+        "de": "Ich suche das.",
+        "uk": "Я це шукаю."
+      },
+      {
+        "de": "Ich nehme das.",
+        "uk": "Я це беру."
+      },
+      {
+        "de": "Kann ich mit Karte bezahlen?",
+        "uk": "Чи можу я розрахуватися карткою?"
+      },
+      {
+        "de": "Mit Karte, bitte.",
+        "uk": "Карткою, будь ласка."
+      },
+      {
+        "de": "Ich bezahle bar.",
+        "uk": "Я плачу готівкою."
+      },
+      {
+        "de": "Kann ich eine Quittung bekommen?",
+        "uk": "Можу я отримати квитанцію?"
+      },
+      {
+        "de": "Wo finde ich Brot?",
+        "uk": "Де я можу знайти хліб?"
+      },
+      {
+        "de": "Ich suche Milch.",
+        "uk": "Я шукаю молоко."
+      },
+      {
+        "de": "Wo ist die Kasse?",
+        "uk": "Де каса?"
+      },
+      {
+        "de": "Ich brauche eine Tüte.",
+        "uk": "Мені потрібен пакет."
+      },
+      {
+        "de": "Haben Sie eine Tüte?",
+        "uk": "У вас є пакет?"
+      }
+    ]
+  },
+  {
+    "title": "6. Числа від одного до двадцяти",
+    "phrases": [
+      {
+        "de": "Eins.",
+        "uk": "Один."
+      },
+      {
+        "de": "Zwei.",
+        "uk": "Два."
+      },
+      {
+        "de": "Drei.",
+        "uk": "Три."
+      },
+      {
+        "de": "Vier.",
+        "uk": "Чотири."
+      },
+      {
+        "de": "Fünf.",
+        "uk": "П’ять."
+      },
+      {
+        "de": "Sechs.",
+        "uk": "Шість."
+      },
+      {
+        "de": "Sieben.",
+        "uk": "Сім."
+      },
+      {
+        "de": "Acht.",
+        "uk": "Вісім."
+      },
+      {
+        "de": "Neun.",
+        "uk": "Дев’ять."
+      },
+      {
+        "de": "Zehn.",
+        "uk": "Десять."
+      },
+      {
+        "de": "Elf.",
+        "uk": "Одинадцять."
+      },
+      {
+        "de": "Zwölf.",
+        "uk": "Дванадцять."
+      },
+      {
+        "de": "Dreizehn.",
+        "uk": "Тринадцять."
+      },
+      {
+        "de": "Vierzehn.",
+        "uk": "Чотирнадцять."
+      },
+      {
+        "de": "Fünfzehn.",
+        "uk": "П’ятнадцять."
+      },
+      {
+        "de": "Sechzehn.",
+        "uk": "Шістнадцять."
+      },
+      {
+        "de": "Siebzehn.",
+        "uk": "Сімнадцять."
+      },
+      {
+        "de": "Achtzehn.",
+        "uk": "Вісімнадцять."
+      },
+      {
+        "de": "Neunzehn.",
+        "uk": "Дев’ятнадцять."
+      },
+      {
+        "de": "Zwanzig.",
+        "uk": "Двадцять."
+      }
+    ]
+  },
+  {
+    "title": "7. Години та час",
+    "phrases": [
+      {
+        "de": "Wie spät ist es?",
+        "uk": "Котра година?"
+      },
+      {
+        "de": "Es ist ein Uhr.",
+        "uk": "Перша година."
+      },
+      {
+        "de": "Es ist sechs Uhr.",
+        "uk": "Шоста година."
+      },
+      {
+        "de": "Es ist halb sieben.",
+        "uk": "Пів на сьому."
+      },
+      {
+        "de": "Es ist acht Uhr.",
+        "uk": "Восьма година."
+      },
+      {
+        "de": "Es ist zwölf Uhr.",
+        "uk": "Дванадцята година."
+      },
+      {
+        "de": "Es ist Viertel nach drei.",
+        "uk": "Чверть на четверту. Третя година п’ятнадцять хвилин."
+      },
+      {
+        "de": "Es ist halb vier.",
+        "uk": "Пів на четверту. Третя година тридцять хвилин."
+      },
+      {
+        "de": "Es ist Viertel vor vier.",
+        "uk": "За чверть четверта. Третя година сорок п’ять хвилин."
+      }
+    ]
+  },
+  {
+    "title": "8. Тварини. Die Tiere.",
+    "phrases": [
+      {
+        "de": "Die Tiere.",
+        "uk": "Тварини."
+      },
+      {
+        "de": "Der Hund.",
+        "uk": "Собака."
+      },
+      {
+        "de": "Die Katze.",
+        "uk": "Кіт або кішка."
+      },
+      {
+        "de": "Die Kuh.",
+        "uk": "Корова."
+      },
+      {
+        "de": "Das Pferd.",
+        "uk": "Кінь."
+      },
+      {
+        "de": "Das Schwein.",
+        "uk": "Свиня."
+      },
+      {
+        "de": "Das Schaf.",
+        "uk": "Вівця."
+      },
+      {
+        "de": "Die Ziege.",
+        "uk": "Коза."
+      },
+      {
+        "de": "Das Huhn.",
+        "uk": "Курка."
+      },
+      {
+        "de": "Die Ente.",
+        "uk": "Качка."
+      },
+      {
+        "de": "Der Hase.",
+        "uk": "Заєць."
+      },
+      {
+        "de": "Der Vogel.",
+        "uk": "Птах."
+      },
+      {
+        "de": "Der Fisch.",
+        "uk": "Риба."
+      },
+      {
+        "de": "Die Maus.",
+        "uk": "Миша."
+      },
+      {
+        "de": "Der Bär.",
+        "uk": "Ведмідь."
+      },
+      {
+        "de": "Der Wolf.",
+        "uk": "Вовк."
+      },
+      {
+        "de": "Ich habe einen Hund.",
+        "uk": "У мене є собака."
+      },
+      {
+        "de": "Das ist meine Katze.",
+        "uk": "Це моя кішка."
+      },
+      {
+        "de": "Der Hund ist groß.",
+        "uk": "Собака великий."
+      },
+      {
+        "de": "Die Katze schläft.",
+        "uk": "Кішка спить."
+      },
+      {
+        "de": "Die Kuh gibt Milch.",
+        "uk": "Корова дає молоко."
+      },
+      {
+        "de": "Das Pferd läuft schnell.",
+        "uk": "Кінь швидко біжить."
+      },
+      {
+        "de": "Ich sehe einen Vogel.",
+        "uk": "Я бачу птаха."
+      },
+      {
+        "de": "Der Fisch schwimmt.",
+        "uk": "Риба плаває."
+      },
+      {
+        "de": "Ich mag Tiere.",
+        "uk": "Я люблю тварин."
+      },
+      {
+        "de": "Hast du Haustiere?",
+        "uk": "У тебе є домашні тварини?"
+      }
+    ]
+  },
+  {
+    "title": "9. Фрази для коханої людини",
+    "phrases": [
+      {
+        "de": "Ich liebe dich.",
+        "uk": "Я тебе кохаю."
+      },
+      {
+        "de": "Ich vermisse dich.",
+        "uk": "Я сумую за тобою."
+      },
+      {
+        "de": "Du bist mein Schatz.",
+        "uk": "Ти мій скарб."
+      },
+      {
+        "de": "Du bist wunderschön.",
+        "uk": "Ти неймовірно красива."
+      },
+      {
+        "de": "Ich denke an dich.",
+        "uk": "Я думаю про тебе."
+      },
+      {
+        "de": "Ich möchte dich umarmen.",
+        "uk": "Я хочу тебе обійняти."
+      },
+      {
+        "de": "Du fehlst mir.",
+        "uk": "Мені тебе не вистачає."
+      },
+      {
+        "de": "Ich freue mich auf dich.",
+        "uk": "Я з нетерпінням чекаю зустрічі з тобою."
+      },
+      {
+        "de": "Ich will immer bei dir sein.",
+        "uk": "Я хочу завжди бути поруч із тобою."
+      },
+      {
+        "de": "Du machst mich glücklich.",
+        "uk": "Ти робиш мене щасливим."
+      },
+      {
+        "de": "Ich liebe dich von ganzem Herzen.",
+        "uk": "Я кохаю тебе всім серцем."
+      }
+    ]
+  }
+]
