@@ -1,12 +1,5 @@
 name: Build Language Pro APK
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-permissions:
-  contents: read
+on: [push, workflow_dispatch]
 jobs:
   apk:
     runs-on: ubuntu-latest
@@ -17,15 +10,12 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
-        with:
-          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
-          log-accepted-android-sdk-licenses: 'false'
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - run: gradle --no-daemon :app:assembleDebug
-      - run: cp app/build/outputs/apk/debug/app-debug.apk Language-Pro-3.1.apk
+      - run: gradle :app:assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: Language-Pro-3.1-APK
-          path: Language-Pro-3.1.apk
+          name: Language-Pro-3.2-APK
+          path: app/build/outputs/apk/debug/app-debug.apk

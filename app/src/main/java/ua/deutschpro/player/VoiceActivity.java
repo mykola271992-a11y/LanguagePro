@@ -16,7 +16,8 @@ import org.json.*;
 import java.util.*;
 
 public class VoiceActivity extends Activity {
-    private static final int BG=0xff0b1020,CARD=0xff19233b,INK=0xfff4f6ff,MUTED=0xffa4afc8,ACCENT=0xffa6f5d2, SPEECH=42;
+    private int BG,CARD,INK,MUTED,ACCENT;
+    private static final int SPEECH=42;
     private Spinner language;
     private EditText source;
     private TextView direction, result, state, speakButton, saveButton;
@@ -28,6 +29,7 @@ public class VoiceActivity extends Activity {
     private int generation=0;
     private final Handler handler=new Handler(Looper.getMainLooper());
 
+    void applyTheme(){ThemePalette t=ThemePalette.current(this);BG=t.bg;CARD=t.card;INK=t.ink;MUTED=t.muted;ACCENT=t.accent;getWindow().setStatusBarColor(BG);getWindow().setNavigationBarColor(BG);int flags=t==ThemePalette.ALL[1]?View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR:0;if(android.os.Build.VERSION.SDK_INT>=26&&t==ThemePalette.ALL[1])flags|=View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;getWindow().getDecorView().setSystemUiVisibility(flags);}
     int dp(int n){return Math.round(n*getResources().getDisplayMetrics().density);}
     GradientDrawable bg(int color,int r){GradientDrawable d=new GradientDrawable();d.setColor(color);d.setCornerRadius(dp(r));return d;}
     LinearLayout col(){LinearLayout x=new LinearLayout(this);x.setOrientation(LinearLayout.VERTICAL);return x;}
@@ -42,7 +44,7 @@ public class VoiceActivity extends Activity {
     String name(String code){return "uk".equals(code)?"Українська":Store.name(code);}
     Locale locale(String code){return "uk".equals(code)?Locale.forLanguageTag("uk-UA"):Store.locale(code);}
 
-    @Override public void onCreate(Bundle b){super.onCreate(b);getWindow().setStatusBarColor(BG);getWindow().setNavigationBarColor(BG);
+    @Override public void onCreate(Bundle b){super.onCreate(b);applyTheme();
         ScrollView scroll=new ScrollView(this);scroll.setBackgroundColor(BG);scroll.setFillViewport(true);setContentView(scroll);
         LinearLayout root=col();root.setPadding(dp(20),dp(18),dp(20),dp(28));scroll.addView(root);
         add(root,button("‹  Назад до плеєра",false,this::finish),0);
@@ -69,7 +71,7 @@ public class VoiceActivity extends Activity {
     void clearResult(){generation++;if(translator!=null){translator.close();translator=null;}if(tts!=null)tts.stop();translated="";original="";if(result!=null)result.setText("Тут з’явиться переклад");enableResult(false);if(state!=null)state.setText("Готово до перекладу");}
     void recognize(){if(recognizing)return;clearResult();PlayerService.command(this,"PAUSE");speechLang=from();Intent intent=new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,locale(speechLang).toLanguageTag());intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1);intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Говори: "+name(speechLang));try{recognizing=true;startActivityForResult(intent,SPEECH);}catch(ActivityNotFoundException e){recognizing=false;state.setText("Немає сервісу розпізнавання голосу. Можна ввести текст.");}catch(SecurityException e){recognizing=false;state.setText("Перевір дозвіл мікрофона в сервісі розпізнавання.");}}
     @Override protected void onActivityResult(int request,int response,Intent data){super.onActivityResult(request,response,data);if(request!=SPEECH)return;recognizing=false;if(response!=RESULT_OK||data==null){state.setText("Запис скасовано");return;}if(!speechLang.equals(from())){state.setText("Мова змінилася. Запиши фразу ще раз.");return;}ArrayList<String> values=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);if(values==null||values.isEmpty()){state.setText("Не вдалося розпізнати фразу");return;}source.setText(values.get(0));translateText();}
-    void translateText(){String value=source.getText().toString().trim();if(value.isEmpty()){source.setError("Введи або продиктуй фразу");return;}if(value.length()>2000){source.setError("До 2000 символів за раз");return;}clearResult();final int g=generation;final String src=from(),dst=to();state.setText("Підготовка мовної моделі…");final Translator t=Translation.getClient(new TranslatorOptions.Builder().setSourceLanguage(src).setTargetLanguage(dst).build());translator=t;t.downloadModelIfNeeded(new DownloadConditions.Builder().build()).addOnSuccessListener(v->{if(!current(g,t))return;state.setText("Перекладаю…");t.translate(value).addOnSuccessListener(answer->{if(!current(g,t))return;translator=null;t.close();original=value;inputLang=src;translated=answer;translatedLang=dst;result.setText(answer);state.setText("Переклад готовий");enableResult(!answer.trim().isEmpty());if(autoSpeak.isChecked()&&!answer.trim().isEmpty())speak();}).addOnFailureListener(e->error(g,t));}).addOnFailureListener(e->error(g,t));}
+    void translateText(){String value=source.getText().toString().trim();if(value.isEmpty()){source.setError("Введи або продиктуй фразу");return;}clearResult();final int g=generation;final String src=from(),dst=to();state.setText("Підготовка мовної моделі…");final Translator t=Translation.getClient(new TranslatorOptions.Builder().setSourceLanguage(src).setTargetLanguage(dst).build());translator=t;t.downloadModelIfNeeded(new DownloadConditions.Builder().build()).addOnSuccessListener(v->{if(!current(g,t))return;state.setText("Перекладаю…");t.translate(value).addOnSuccessListener(answer->{if(!current(g,t))return;translator=null;t.close();original=value;inputLang=src;translated=answer;translatedLang=dst;result.setText(answer);state.setText("Переклад готовий");enableResult(!answer.trim().isEmpty());if(autoSpeak.isChecked()&&!answer.trim().isEmpty())speak();}).addOnFailureListener(e->error(g,t));}).addOnFailureListener(e->error(g,t));}
     boolean current(int g,Translator t){return !destroyed&&generation==g&&translator==t;}
     void error(int g,Translator t){if(!current(g,t))return;translator=null;t.close();state.setText("Помилка перекладу. Перевір мережу та вільне місце й повтори.");}
     void speak(){if(translated.isEmpty())return;if(!ready||tts==null){state.setText("Голос ще не готовий. Спробуй знову.");return;}PlayerService.command(this,"PAUSE");int lang=tts.setLanguage(locale(translatedLang));if(lang==TextToSpeech.LANG_MISSING_DATA||lang==TextToSpeech.LANG_NOT_SUPPORTED){state.setText("Встанови голос: "+name(translatedLang)+" у налаштуваннях Android");return;}tts.setSpeechRate(Store.prefs(this).getFloat("speed",.85f));if(tts.speak(translated,TextToSpeech.QUEUE_FLUSH,null,"voice-"+generation)==TextToSpeech.ERROR)state.setText("Не вдалося озвучити переклад");}

@@ -2,7 +2,7 @@ package ua.deutschpro.player;
 import android.content.*; import java.io.*; import java.nio.charset.StandardCharsets; import java.util.*; import org.json.*;
 final class Store {
  static android.content.SharedPreferences prefs(Context c){return c.getSharedPreferences("deutsch_player",0);}
- static String read(InputStream in)throws IOException {try(InputStream x=in; ByteArrayOutputStream o=new ByteArrayOutputStream()){byte[] b=new byte[4096];int n;while((n=x.read(b))!=-1){o.write(b,0,n);if(o.size()>2_000_000)throw new IOException("Файл завеликий");}return new String(o.toByteArray(),StandardCharsets.UTF_8).replace("\uFEFF","");}}
+ static String read(InputStream in)throws IOException {try(InputStream x=in; ByteArrayOutputStream o=new ByteArrayOutputStream()){byte[] b=new byte[4096];int n;while((n=x.read(b))!=-1){o.write(b,0,n);if(o.size()>10_000_000)throw new IOException("Файл завеликий (понад 10 МБ)");}return new String(o.toByteArray(),StandardCharsets.UTF_8).replace("\uFEFF","");}}
  static JSONArray lessons(Context c){try{String s=prefs(c).getString("lessons",null);return new JSONArray(s==null?read(c.getAssets().open("lessons.json")):s);}catch(Exception e){return new JSONArray();}}
  static JSONObject lesson(Context c,int i){JSONArray a=lessons(c);return a.optJSONObject(i);}
  static JSONArray phrases(Context c,int i){JSONObject o=lesson(c,i);JSONArray a=o==null?null:o.optJSONArray("phrases");return a==null?new JSONArray():a;}
@@ -16,14 +16,24 @@ final class Store {
  static int adjacent(Context c,int i,int dir){String lang=language(c,i);JSONArray a=lessons(c);for(int k=i+dir;k>=0&&k<a.length();k+=dir)if(language(c,k).equals(lang))return k;return -1;}
  static void saveTranslated(Context c,String title,String lang,JSONArray pairs)throws JSONException{if(pairs.length()==0)throw new JSONException("Порожній урок");JSONArray all=lessons(c);all.put(new JSONObject().put("title",title).put("language",lang).put("phrases",pairs));if(!prefs(c).edit().putString("lessons",all.toString()).commit())throw new JSONException("Не вдалося зберегти урок");}
  static boolean cyr(String s){return s.matches("(?s).*[А-Яа-яІіЇїЄєҐґ].*");}
+ static boolean ukrainianOnly(String raw){boolean any=false;for(String line:raw.split("\\R")){String x=line.trim();if(x.isEmpty())continue;any=true;if(!cyr(x)||x.contains("|")||x.contains(";")||x.contains("\t"))return false;}return any;}
  static JSONObject pair(String a,String b)throws JSONException{JSONObject p=new JSONObject();p.put("de",cyr(a)&&!cyr(b)?b:a);p.put("uk",cyr(a)&&!cyr(b)?a:b);return p;}
  static int add(Context c,String name,String raw,String lang)throws Exception{
   JSONArray all=lessons(c), pairs=new JSONArray();ArrayList<String> plain=new ArrayList<>();int count=0;
-  for(String l:raw.split("\\R")){l=l.trim();if(l.isEmpty())continue;if(l.matches("(?i)^урок\\s+\\d+.*")){if(pairs.length()>0||plain.size()>0){count+=finish(all,name,pairs,plain,lang);pairs=new JSONArray();plain.clear();}name=l;continue;}
-   String[] p=l.split("\\s*[|;\\t]\\s*",2);if(p.length==1 && l.contains(",")){String[] q=l.split(",",2);if(cyr(q[0])!=cyr(q[1]))p=q;}
-   if(p.length==2&&cyr(p[0])!=cyr(p[1])){if(pairs.length()<1000)pairs.put(pair(p[0].trim(),p[1].trim()));}else plain.add(l);
-  }count+=finish(all,name,pairs,plain,lang);if(count==0)throw new IOException("Не знайдено двомовних фраз. Формат: іноземна фраза | Українська");prefs(c).edit().putString("lessons",all.toString()).apply();return count;
+  for(String l:raw.split("\\R")){l=l.trim();if(l.isEmpty())continue;
+   if(l.matches("(?i)^урок\\s+\\d+.*")){if(pairs.length()>0||plain.size()>0){count+=finish(all,name,pairs,plain,lang);pairs=new JSONArray();plain.clear();}name=l;continue;}
+   if(l.matches("(?i)^wortschatz\\b.*"))continue;
+   String[] p=l.split("\\s*[|;\\t]\\s*",2);if(p.length==1&&l.contains(",")){String[] q=l.split(",",2);if(cyr(q[0])!=cyr(q[1]))p=q;}
+   if(p.length==2&&cyr(p[0])!=cyr(p[1]))pairs.put(pair(p[0].trim(),p[1].trim()));else plain.add(l);
+  }
+  count+=finish(all,name,pairs,plain,lang);if(count==0)throw new IOException("Не знайдено слів або фраз. Додай іншомовні слова окремими рядками чи формат: іноземна фраза | Українська");
+  if(!prefs(c).edit().putString("lessons",all.toString()).commit())throw new IOException("Не вдалося зберегти урок");return count;
  }
- static int finish(JSONArray all,String name,JSONArray p,ArrayList<String> plain,String lang)throws JSONException{for(int i=0;i+1<plain.size()&&p.length()<1000;i++){String a=plain.get(i),b=plain.get(i+1);if(cyr(a)==cyr(b)||a.length()>400||b.length()>400)continue;p.put(pair(a,b));i++;if(i+1<plain.size()&&plain.get(i+1).equals(a))i++;}if(p.length()>0)all.put(new JSONObject().put("title",name).put("language",lang).put("phrases",p));return p.length();}
+ static int finish(JSONArray all,String name,JSONArray p,ArrayList<String> plain,String lang)throws JSONException{
+  boolean allForeign=!plain.isEmpty();for(String s:plain)if(cyr(s)){allForeign=false;break;}
+  if(allForeign){for(String s:plain)p.put(new JSONObject().put("de",s).put("uk",""));}
+  else for(int i=0;i+1<plain.size();i++){String a=plain.get(i),b=plain.get(i+1);if(cyr(a)==cyr(b))continue;p.put(pair(a,b));i++;if(i+1<plain.size()&&plain.get(i+1).equals(a))i++;}
+  if(p.length()>0)all.put(new JSONObject().put("title",name).put("language",lang).put("phrases",p));return p.length();
+ }
  static void delete(Context c,int i){JSONArray a=lessons(c);a.remove(i);prefs(c).edit().putString("lessons",a.toString()).putInt("lesson",0).putInt("phrase",0).apply();}
 }
